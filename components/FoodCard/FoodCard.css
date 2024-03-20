@@ -1,0 +1,86 @@
+/* cardcss */
+
+  
+  .food-card {
+    margin: 3rem 5rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    border-radius: 14px;
+    width: 485px;
+    margin: 0.5rem;
+    padding: 1rem;
+    display: inline-block;
+    position: relative;
+  }
+  .card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  .image-container {
+    border-radius: 1rem;
+    width: 100%;
+    height: 20rem;
+  }
+  .card-image {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgb(248, 248, 248) 0%,
+        rgb(255, 255, 255) 10%,
+        rgb(248, 248, 248) 40%,
+        rgb(248, 248, 248) 100%
+      )
+      no-repeat rgb(248, 248, 248);
+    opacity: 0;
+    transition: opacity 0.25s ease-out 0s;
+    will-change: opacity;
+    border-radius: inherit;
+    animation: 1.5s linear 0s infinite normal forwards running jCOzbu;
+  }
+  .food-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: none;
+    opacity: 1;
+    will-change: transform, opacity;
+    border-radius: inherit;
+    filter: unset;
+    transition: opacity 0.25s ease 0s, transform 0.25s ease 0s;
+  }
+  .food-details {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .hotel-name {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-family: Okra, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+  }
+  
+  .badge {
+    background-color: rgb(38, 126, 62);
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .location-cost {
+    margin: -2rem 0rem -1rem;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    line-height: 1rem;
+    display: flex;
+  }
+  
