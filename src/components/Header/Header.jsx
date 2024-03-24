@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import {Navbar, Button} from "react-bootstrap";
+import { Navbar, Button, Nav } from "react-bootstrap";
 
 const Header = () => {
   const [loginBtnName, setLoginBtnName] = useState("LOG IN");
@@ -13,26 +13,22 @@ const Header = () => {
       : setLoginBtnName("LOG IN");
   };
   return (
-    <div>
-      <Navbar
-        className="bg-body-tertiary"
-        bg="dark"
-        data-bs-theme="dark"
-        fixed="top"
-      >
-        <Container>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
+    <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="darktop" fixed="">
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
             <Button variant="link" onClick={onNamechangeHanlder}>
               {loginBtnName}
             </Button>
-            <Navbar.Text>
-              Signed in as: <a href="#login">Mark Otto</a>
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 export default Header;

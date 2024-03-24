@@ -42,35 +42,40 @@ const MainContainer = () => {
   }, []);
 
   return (
-    <div>
-      <div className="action-container">
-        <div className="top-rated-button">
-          <Button className="sm-small-screen-btn"
-            variant="primary"
-            size="md"
-            onClick={filterTopRatedProductsHandler}
-          >
-            Filter Top Rated Products
-          </Button>
+    <div className="footer_component">
+      <div className="action-distributed">
+        <div className="footer-left">
+          <div className="top-rated-button">
+            <Button
+              style={{ padding: "6px 60px" }}
+              variant="primary"
+              size="md"
+              onClick={filterTopRatedProductsHandler}
+            >
+              TopRated Products
+            </Button>
           </div>
-          <div className="search-product">
-          <Form.Control style={{padding:' 0.3rem 3rem'}}
+        </div>
+        <div className="footer-right">
+          
+          <Form.Control
+           style={{ padding: "5px 30px" }}
             size="md"
             type="text"
             placeholder="Search Products"
             onChange={filterProductsHandler}
           />
-          </div>
+        </div>
       </div>
       <div className="card-container">
         {/* <div style={{ display: "flex", flexWrap: "wrap" }}> */}
-          {/* map funtionality to display tha array in card  */}
-          {filteredProducts?.map((productCardData) => (
-            <ProductCard
-              key={productCardData?.id}
-              productCardData={productCardData}
-            />
-          ))}
+        {/* map funtionality to display tha array in card  */}
+        {filteredProducts?.map((productCardData) => (
+          <ProductCard
+            key={productCardData?.id}
+            productCardData={productCardData}
+          />
+        ))}
         {/* </div> */}
       </div>
     </div>
