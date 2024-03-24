@@ -1,3 +1,6 @@
+// 20240323115800
+// https://fakestoreapi.com/products
+
 export const cardMockData = [
   {
     id: 1,
