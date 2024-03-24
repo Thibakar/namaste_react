@@ -6,12 +6,14 @@
   }
   
   .card {
+    background-color: #FFFF;
     border-radius: 14px;
     width: 340px;
     margin: 0.5rem;
     padding: 1rem;
     display: inline-block;
     position: relative;
+    box-shadow: 0px 1px 1px #00000038, 0 1px 1px #00000038;
   }
   .card:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -22,26 +24,6 @@
     height: 20rem;
   }
   .card-image {
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    background: linear-gradient(
-        to right,
-        rgb(248, 248, 248) 0%,
-        rgb(255, 255, 255) 10%,
-        rgb(248, 248, 248) 40%,
-        rgb(248, 248, 248) 100%
-      )
-      no-repeat rgb(248, 248, 248);
-    opacity: 0;
-    transition: opacity 0.25s ease-out 0s;
-    will-change: opacity;
-    border-radius: inherit;
-    animation: 1.5s linear 0s infinite normal forwards running jCOzbu;
-  }
-  .food-image {
     width: 100%;
     height: 100%;
     object-fit: cover;

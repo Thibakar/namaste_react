@@ -7,8 +7,7 @@ const ProductCard = ({ productCardData }) => {
     <div className="food-card">
       <div className="card">
         <div className="image-container">
-          <div className="card-image"></div>
-          <img className="food-image" src={image} />
+          <img className="card-image" src={image} />
         </div>
         <div className="food-details">
           <div className="hotel-name">
@@ -19,7 +18,7 @@ const ProductCard = ({ productCardData }) => {
           </div>
           <div className="location-cost">
             <p className="hotel location">
-              {description.substring(0, 30)}
+              {description.substring(0, 25)}
             </p>
             <p className="food-cost">{price}</p>
           </div>
