@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { Button, Form, Row, Container, Col } from "react-bootstrap";
 import ProductCard from "./components/ProductCard/ProductCard";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 
 const MainContainer = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [loginBtnName, setLoginBtnName] = useState("LOG IN");
   const [searchText, setSearchText] = useState("");
   console.log("products", products);
   console.log("filteredProducts", filteredProducts);
-
-  ///Login button name change function
-  const onNamechangeHanlder = () => {
-    loginBtnName === "LOG IN"
-      ? setLoginBtnName("LOG OUT")
-      : setLoginBtnName("LOG IN");
-  };
 
   /// search functionality using filter
   const filterProductsHandler = (e) => {
@@ -49,45 +42,38 @@ const MainContainer = () => {
   }, []);
 
   return (
-    <>
-      {/* terrinary codition statement  */}
-      {products.length === 0 ? (
-        <LoadingSpinner />
-      ) : (
-        <>
-          <div className="action-bar">
-            <button
-              className="filter-button"
-              onClick={filterTopRatedProductsHandler}
-            >
-              Top Rated Products
-            </button>
-
-            <input
-              className="search-input"
-              type="input"
-              value={searchText}
-              onChange={filterProductsHandler}
-            />
-
-            <button className="filter-button" onClick={onNamechangeHanlder}>
-              {loginBtnName}
-            </button>
-          </div>{" "}
-          <div className="card_container">
-            <div className="card-details">
-              {/* map funtionality to display tha array in card  */}
-              {filteredProducts?.map((productCardData) => (
-                <ProductCard
-                  key={productCardData?.id}
-                  productCardData={productCardData}
-                />
-              ))}
-            </div>
+    <div>
+      <div className="action-container">
+        <div className="top-rated-button">
+          <Button className="sm-small-screen-btn"
+            variant="primary"
+            size="md"
+            onClick={filterTopRatedProductsHandler}
+          >
+            Filter Top Rated Products
+          </Button>
           </div>
-        </>
-      )}
-    </>
+          <div className="search-product">
+          <Form.Control style={{padding:' 0.3rem 3rem'}}
+            size="md"
+            type="text"
+            placeholder="Search Products"
+            onChange={filterProductsHandler}
+          />
+          </div>
+      </div>
+      <div className="card-container">
+        {/* <div style={{ display: "flex", flexWrap: "wrap" }}> */}
+          {/* map funtionality to display tha array in card  */}
+          {filteredProducts?.map((productCardData) => (
+            <ProductCard
+              key={productCardData?.id}
+              productCardData={productCardData}
+            />
+          ))}
+        {/* </div> */}
+      </div>
+    </div>
   );
 };
 export default MainContainer;

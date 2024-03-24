@@ -1,86 +1,51 @@
-.app_container {
-  background: #efefefef;
-}
 
-.card_container {
-    max-height: initial;
-    margin: 2rem 10rem;
-    position: relative;
-}
-.card-details {
+.action-container{
+  background: #fafad2;
   flex-wrap: wrap;
-  width: 100%;
+  justify-content: space-between;
+  padding: 4.5rem 1rem 1.5rem 1rem;
   display: flex;
 }
-.action-bar {
-  justify-content: center;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 2rem;
-  display: flex;
-  box-shadow: 0 0 #00000040, 0 5px 5px #00000038;
-}
-.filter-button{
-  width: 22rem;
-  border: 1px solid #efefef;
-  border-radius: 0.3rem;
-  padding: 1rem 5rem;
-  font-size: larger;
-  margin: 0 0.9rem;
-}
-.filter-button:hover{
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-
-}
-.search-input{
-  width: 22rem;
-  border: 1px solid #efefef;
-  border-radius: 0.3rem;
+.card-container {
+  max-height: initial;
+  flex-wrap: wrap;
   padding: 1rem 1rem;
-  font-size: larger;
+  display: flex;
+  position: relative;
 }
-.search-inpu:focus-visible{
-  border: 1px solid #efefef !important;
+
+.top-rated-button{
+  padding: 0rem 10rem;
+}
+.search-product{
+  padding: 0rem 10rem;
+
 
 }
-.search-button{
-  width: 22rem;
-  border: 1px solid #efefef;
-  border-radius: 0.3rem;
-  padding: 1rem 5rem;
-  font-size: larger;
-}
-.search-button:hover{
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
-}
+
 
 
 @media only screen and (max-width: 600px) {
   body {
     background: #efefefef;
   }
-  .action-bar {
-    margin: 0rem 0.5rem;
-    background-color: #fff;
-    border-radius: 5px;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 2rem;
-    display: flex;
-    box-shadow: 0 0 #00000040, 0 5px 5px #00000038;
-}
-.card_container {
-  max-height: initial;
-  margin: 2rem 1rem;
-  position: relative;
-}
-.search-input {
-  border: 1px solid #efefef;
-  border-radius: 0.3rem;
-  width: 17rem;
-  padding: 1rem;
-  font-size: larger;
-  margin: 0.2rem 0;
-}
+  .main-container{
+    padding: "2rem 1rem";
+    margin: "5rem 1rem 2rem";
+  }
+
+  .top-rated-button{
+    padding: 0 0rem;
+    }
+  .search-product{
+    padding: 0px 0rem;
+    width: 100%;
+  
+  
+  }
+  .sm-small-screen-btn{
+    padding: 0.4rem 3.4rem;
+  }
+  
 }
