@@ -10,10 +10,13 @@ const AppLayout = () => {
   return (
     <>
       <div className="row">
-        <Header/>
-        <div className="side"> </div>
-        <div className="main"><MainContainer/> </div>
-        <div className="footer"> <Footer/></div>
+        <Header />
+        <div className="main">
+          <MainContainer />
+        </div>
+        <div className="footer">
+          <Footer />
+        </div>
       </div>
     </>
   );

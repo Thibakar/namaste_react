@@ -31,10 +31,12 @@ const MainContainer = () => {
 
   //Fetch API data function using async and wait
   const getFetchData = async () => {
-    const data = await fetch(`https://fakestoreapi.com/products`);
+    const data = await fetch(
+      `https://www.zomato.com/webroutes/getPage?page_url=/bangalore/live-sports-screenings&location=&isMobile=0`
+    );
     const jsonData = await data.json();
-    setProducts(jsonData);
-    setFilteredProducts(jsonData);
+    setProducts(jsonData?.page_data?.sections?.SECTION_ENTITIES_DATA);
+    setFilteredProducts(jsonData?.page_data?.sections?.SECTION_ENTITIES_DATA);
   };
 
   ///useEffect update the component with API Data
@@ -49,40 +51,20 @@ const MainContainer = () => {
       ) : (
         <>
           <div className="action-bar-container">
-            <div className="flex-item-left">
-              <Button
-                className="button-size"
-                variant="primary"
-                size="md"
-                onClick={filterTopRatedProductsHandler}
-              >
-                TopRated Products
-              </Button>
-            </div>
-            <div className="flex-item-right">
-              <Form.Control
-                className="button-size"
-                s
-                size="md"
-                type="text"
-                placeholder="Search Products"
-                onChange={filterProductsHandler}
-              />
-            </div>
+            <form class="example">
+              <input type="text" placeholder="Search.." name="search" />
+              <button  onClick={filterTopRatedProductsHandler}>
+                Top Rated
+              </button>
+            </form>
           </div>
           <div className="card-render-container">
-            {filteredProducts.length === 0 ? (
-              <NoDataFound/>
-            ) : (
-              <>
-                {filteredProducts?.map((productCardData) => (
-                  <ProductCard
-                    key={productCardData?.id}
-                    productCardData={productCardData}
-                  />
-                ))}
-              </>
-            )}
+            {filteredProducts?.map((productCardData) => (
+              <ProductCard
+                key={productCardData?.id}
+                productCardData={productCardData}
+              />
+            ))}
           </div>
         </>
       )}
