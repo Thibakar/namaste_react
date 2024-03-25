@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form, Row, Container, Col } from "react-bootstrap";
 import ProductCard from "./components/ProductCard/ProductCard";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import NoDataFound from "./components/NoDataFound/NoDataFound";
 
 const MainContainer = () => {
   const [products, setProducts] = useState([]);
@@ -42,43 +43,50 @@ const MainContainer = () => {
   }, []);
 
   return (
-    <div className="footer_component">
-      <div className="action-distributed">
-        <div className="footer-left">
-          <div className="top-rated-button">
-            <Button
-              style={{ padding: "6px 60px" }}
-              variant="primary"
-              size="md"
-              onClick={filterTopRatedProductsHandler}
-            >
-              TopRated Products
-            </Button>
+    <>
+      {products.length === 0 ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <div className="action-bar-container">
+            <div className="flex-item-left">
+              <Button
+                className="button-size"
+                variant="primary"
+                size="md"
+                onClick={filterTopRatedProductsHandler}
+              >
+                TopRated Products
+              </Button>
+            </div>
+            <div className="flex-item-right">
+              <Form.Control
+                className="button-size"
+                s
+                size="md"
+                type="text"
+                placeholder="Search Products"
+                onChange={filterProductsHandler}
+              />
+            </div>
           </div>
-        </div>
-        <div className="footer-right">
-          
-          <Form.Control
-           style={{ padding: "5px 30px" }}
-            size="md"
-            type="text"
-            placeholder="Search Products"
-            onChange={filterProductsHandler}
-          />
-        </div>
-      </div>
-      <div className="card-container">
-        {/* <div style={{ display: "flex", flexWrap: "wrap" }}> */}
-        {/* map funtionality to display tha array in card  */}
-        {filteredProducts?.map((productCardData) => (
-          <ProductCard
-            key={productCardData?.id}
-            productCardData={productCardData}
-          />
-        ))}
-        {/* </div> */}
-      </div>
-    </div>
+          <div className="card-render-container">
+            {filteredProducts.length === 0 ? (
+              <NoDataFound/>
+            ) : (
+              <>
+                {filteredProducts?.map((productCardData) => (
+                  <ProductCard
+                    key={productCardData?.id}
+                    productCardData={productCardData}
+                  />
+                ))}
+              </>
+            )}
+          </div>
+        </>
+      )}
+    </>
   );
 };
 export default MainContainer;

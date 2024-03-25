@@ -1,79 +1,102 @@
-
-.action-distributed{
+* {
   box-sizing: border-box;
-  text-align: left;
-  background: #444;
-  width: 100%;
-  padding: 16px 60px 16px;
-  font: bold 16px sans-serif;
-  overflow: hidden;
-  box-shadow: 0 1px 1px #0000001f;
 }
 
-.action-distributed .footer-left {
-  float: left;
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
 }
 
-.action-distributed .footer-left .top-rated-button{
-  padding: .5rem 0rem;
-}
-.action-distributed .footer-right {
-  float: right;
-}
-.action-distributed .footer-right .top-rated-button{
-  padding: 5px 0px;
-}
-
-.card-container {
-  max-height: initial;
+.row {  
+  display: flex;
   flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 20%;
+  background-color: #f1f1f1;
+}
+
+/* Main column */
+.main {
+  flex: 80%;
+  background-color: white;
+}
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  background: #ddd;
+}
+
+
+.flex-item-left {
+  flex: 50%;
+}
+
+.flex-item-right {
+  flex: 50%;
+}
+
+.card-render-container{
+  flex-wrap: wrap;
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.action-bar-container{
   padding: 1rem;
   display: flex;
-  position: relative;
-  position: unset;
+  background-color: #41464b;
+}
+.action-bar-container .flex-item-left {
+  display: flex;
+  justify-content: space-evenly;
+}
+.action-bar-container .flex-item-left .button-size{
+  width: 80%;
+}
+.action-bar-container .flex-item-right .button-size{
+  width: 80%;
+}
+
+.NoDataFound-container{
+  padding: 13%;
+  background-color: #efefef;
+  border-radius: 5px;
 }
 
 
 
 
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
 
+  .action-bar-container{
+    flex-direction: column-reverse;
 
-@media  (max-width: 800px) {
-  body {
-    background: #efefefef;
-  }
-  .action-distributed{
-    box-sizing: border-box;
-    text-align: left;
-    background: #444;
-    width: 100%;
-    padding: 16px 60px 16px;
-    font: bold 16px sans-serif;
-    overflow: hidden;
-    box-shadow: 0 1px 1px #0000001f;
   }
 
-  .action-distributed {
-    padding: 30px;
-  }
-
-  .action-distributed .footer-left,
-  .action-distributed .footer-right {
-    float: none;
-    max-width: 320px;
-    margin: 0 auto;
-  }
-
-  .action-distributed .footer-left {
-    margin-bottom: 10px;
-  }
-
-  .action-distributed form {
-    margin-top: 10px;
-  }
-
-  .action-distributed form {
-    display: block;
-  }
+.card-render-container{
+  padding: 0px 20px;
   
+
+}
+  .flex-item-right, .flex-item-left {
+    flex: 100%;
+  }
+
+  .action-bar-container .flex-item-left .button-size{
+    width: 100%;
+  }
+  .action-bar-container .flex-item-right .button-size{
+    width: 100%;
+  }
+
 }

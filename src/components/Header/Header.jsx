@@ -13,22 +13,28 @@ const Header = () => {
       : setLoginBtnName("LOG IN");
   };
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="darktop" fixed="">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <Button variant="link" onClick={onNamechangeHanlder}>
-              {loginBtnName}
-            </Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className="nav-container">
+      <Navbar
+        expand="lg"
+        className="bg-body-tertiary"
+        bg="dark"
+        data-bs-theme="dark"
+      >
+        <Container>
+          <Navbar.Brand href="#home">New Collections</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link>
+              <Button variant="link" onClick={onNamechangeHanlder}>
+                {loginBtnName}
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </div>
   );
 };
 export default Header;

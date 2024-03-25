@@ -9,9 +9,12 @@ import Footer from "./src/components/Footer/Footer";
 const AppLayout = () => {
   return (
     <>
-      <Header />
-      <MainContainer />
-      <Footer />
+      <div className="row">
+        <Header/>
+        <div className="side"> </div>
+        <div className="main"><MainContainer/> </div>
+        <div className="footer"> <Footer/></div>
+      </div>
     </>
   );
 };
