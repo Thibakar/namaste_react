@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Navbar, Button, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [loginBtnName, setLoginBtnName] = useState("LOG IN");
@@ -24,12 +25,13 @@ const Header = () => {
           <Navbar.Brand href="#home">New Collections</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <Button variant="link" onClick={onNamechangeHanlder}>
+            <Nav className="me-auto gap-4">
+              <Link to="/">Home</Link>
+              <Link to="/about">About us</Link>
+              <Link to="/contact">Contact us</Link>
+              <Link to="" onClick={onNamechangeHanlder}>
                 {loginBtnName}
-              </Button>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -38,5 +40,3 @@ const Header = () => {
   );
 };
 export default Header;
-
-<Navbar.Collapse></Navbar.Collapse>;
