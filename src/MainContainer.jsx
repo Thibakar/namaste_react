@@ -3,6 +3,7 @@ import { Button, Form, Row, Container, Col } from "react-bootstrap";
 import ProductCard from "./components/ProductCard/ProductCard";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import NoDataFound from "./components/NoDataFound/NoDataFound";
+import Footer from "./components/Footer/Footer";
 
 const MainContainer = () => {
   const [products, setProducts] = useState([]);
@@ -44,28 +45,38 @@ const MainContainer = () => {
 
   return (
     <>
-      {products.length === 0 ? (
-        <LoadingSpinner />
-      ) : (
-        <>
-          <div className="action-bar-container">
-            <form class="example">
-              <input type="text" placeholder="Search.." name="search" onChange={filterProductsHandler} />
-              <button  onClick={filterTopRatedProductsHandler}>
-                Top Rated
-              </button>
-            </form>
-          </div>
-          <div className="card-render-container">
-            {filteredProducts?.map((productCardData) => (
-              <ProductCard
-                key={productCardData?.id}
-                productCardData={productCardData}
-              />
-            ))}
-          </div>
-        </>
-      )}
+      <div className="main">
+        {products.length === 0 ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            <div className="action-bar-container">
+              <form class="example">
+                <input
+                  type="text"
+                  placeholder="Search.."
+                  name="search"
+                  onChange={filterProductsHandler}
+                />
+                <button onClick={filterTopRatedProductsHandler}>
+                  Top Rated
+                </button>
+              </form>
+            </div>
+            <div className="card-render-container">
+              {filteredProducts?.map((productCardData) => (
+                <ProductCard
+                  key={productCardData?.id}
+                  productCardData={productCardData}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
     </>
   );
 };
