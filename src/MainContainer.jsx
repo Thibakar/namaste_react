@@ -31,12 +31,10 @@ const MainContainer = () => {
 
   //Fetch API data function using async and wait
   const getFetchData = async () => {
-    const data = await fetch(
-      `https://www.zomato.com/webroutes/getPage?page_url=/bangalore/live-sports-screenings&location=&isMobile=0`
-    );
+    const data = await fetch(`https://fakestoreapi.com/products`);
     const jsonData = await data.json();
-    setProducts(jsonData?.page_data?.sections?.SECTION_ENTITIES_DATA);
-    setFilteredProducts(jsonData?.page_data?.sections?.SECTION_ENTITIES_DATA);
+    setProducts(jsonData);
+    setFilteredProducts(jsonData);
   };
 
   ///useEffect update the component with API Data
@@ -52,7 +50,7 @@ const MainContainer = () => {
         <>
           <div className="action-bar-container">
             <form class="example">
-              <input type="text" placeholder="Search.." name="search" />
+              <input type="text" placeholder="Search.." name="search" onChange={filterProductsHandler} />
               <button  onClick={filterTopRatedProductsHandler}>
                 Top Rated
               </button>

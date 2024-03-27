@@ -48,8 +48,8 @@ body {
 }
 
 .action-bar-container{
-  background-color: #efefef;
-  padding: 5rem 10rem;;
+  background-color: #444;
+  padding: 2rem 31rem;;
 }
 .action-bar-container .flex-item-left {
   display: flex;
@@ -74,25 +74,53 @@ body {
 
 form.example input[type=text] {
   float: left;
-  background: #ffff;
-  border: 1px solid #ffff;
   width: 80%;
-  padding: 10px;
-  font-size: 17px;
-  border-radius: 24px
+  border-radius: 24px;
+
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #1f2022;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  border: none;
+  resize: none;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: normal;
+  color: #d1d2d2;
+
+  width: 400px;
+  padding: 18px;
+
+}
+
+.form.example input[type=text] ::-webkit-input-placeholder {
+  color: #5c666b;
+}
+
+.form.example input[type=text] ::-moz-placeholder {
+  color: #5c666b;
+  opacity: 1;
+}
+
+.form.example input[type=text] :-ms-input-placeholder {
+  color: #5c666b;
 }
 
 form.example button {
+  display: block;
   float: left;
   width: 20%;
-  padding: 10px;
+  padding: 18px;
   background: #2196F3;
   color: white;
-  font-size: 17px;
+  font-size: 14px;
   border: 1px solid grey;
   border-left: none;
   cursor: pointer;
-  border-radius: 24px;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+
 }
 
 form.example button:hover {
@@ -111,11 +139,10 @@ form.example::after {
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
 
-
-  .action-bar-container{
-    background-color: #efefef;
-    padding: 1rem 2rem;
-  }
+  .action-bar-container {
+    /* background-color: #efefef; */
+    padding: 0rem 0rem;
+}
 
   .card-render-container {
     padding: 0 0px;
@@ -134,8 +161,9 @@ form.example::after {
   width: 70%;
   }
   form.example button {
-  
-  width: 30%;
+    height: 3.6rem;
+    padding: 15px;
+    width: 30%;
   }
 
 
