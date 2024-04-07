@@ -7,9 +7,9 @@ import "./App.css";
 
 import Header from "./src/components/Header/Header";
 import MainContainer from "./src/MainContainer";
-import Footer from "./src/components/Footer/Footer";
 import About from "./src/components/About/About";
 import Contact from "./src/components/Contact";
+import Error from "./src/components/Error/Error"
 
 const AppLayout = () => {
   return (
@@ -24,6 +24,7 @@ const Router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -38,8 +39,6 @@ const Router = createBrowserRouter([
         element: <Contact />,
       },
     ],
-    errorElement: <h1>oopss something went wrong....1</h1>,
-
   },
 ]);
 

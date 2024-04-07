@@ -1,31 +1,32 @@
 import * as React from "react";
 import "./ProductCard.css";
-import { Card, Row, Badge } from "react-bootstrap";
 
 const ProductCard = ({ productCardData }) => {
-  const {title, category, subtitleData, price, image, rating } = productCardData;
-console.log('productCardData', productCardData)
-    return (
+  console.log("productCardData", productCardData.info);
+  const { cloudinaryImageId, avgRating, name, cuisines, costForTwo } =
+    productCardData?.info;
+
+  return (
     <>
-      <Card className="product-card">
-        <Card.Img className="image-container" variant="top" src={image} />
-        <Card.Body className="product-card-details">
-          <Card.Title>
-            <div className="product-card-title">
-              <h5>{title.substring(0, 15)}</h5>
-              <h5>
-                <Badge bg="primary">{rating?.rate}</Badge>
-              </h5>
-            </div>
-          </Card.Title>
-          <Card.Text>
-            <div className="product-card-subtitle">
-              <p>{category?.substring(0, 15)}</p>
-              <p className="food-cost">{price}</p>
-            </div>
-          </Card.Text>
-        </Card.Body>
-      </Card>
+      <div className="product-card">
+        <div className="image-container">
+          <img
+            className="product-image"
+            src={
+              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+              cloudinaryImageId
+            }
+          />
+        </div>
+        <div className="product-description p-10">
+          <h4>{name.substring(0, 19)} </h4>
+          <h4 className="badge">{avgRating} </h4>
+        </div>
+        <div className="p-10">
+          <p>{cuisines.join(",")}</p>
+          <p>{costForTwo} </p>
+        </div>
+      </div>
     </>
   );
 };

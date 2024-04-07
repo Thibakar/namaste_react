@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Row, Container, Col } from "react-bootstrap";
 import ProductCard from "./components/ProductCard/ProductCard";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
-import NoDataFound from "./components/NoDataFound/NoDataFound";
 import Footer from "./components/Footer/Footer";
 
 const MainContainer = () => {
@@ -16,15 +14,16 @@ const MainContainer = () => {
   const filterProductsHandler = (e) => {
     setSearchText(e.target.value);
     let filteredProducts = products?.filter((item) =>
-      item?.title?.toLowerCase().includes(searchText.toLowerCase())
+      item?.info.name?.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredProducts(filteredProducts);
   };
 
   /// filter topRated card function
   const filterTopRatedProductsHandler = () => {
+    console.log("jhghjgkkjkj");
     let filterdTopRatedProducts = products?.filter(
-      (item) => item?.rating?.rate >= 4
+      (item) => item?.info?.avgRating > 4.5
     );
     setFilteredProducts(filterdTopRatedProducts);
     setSearchText("");
@@ -32,13 +31,21 @@ const MainContainer = () => {
 
   //Fetch API data function using async and wait
   const getFetchData = async () => {
-    const data = await fetch(`https://fakestoreapi.com/products`);
+    const data = await fetch(
+      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+    );
     const jsonData = await data.json();
-    setProducts(jsonData);
-    setFilteredProducts(jsonData);
+    console.log("jsonData", jsonData.data);
+    setProducts(
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setFilteredProducts(
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
-  ///useEffect update the component with API Data
   useEffect(() => {
     getFetchData();
   }, []);
@@ -50,23 +57,25 @@ const MainContainer = () => {
           <LoadingSpinner />
         ) : (
           <>
-            <div className="action-bar-container">
-              <form class="example">
-                <input
-                  type="text"
-                  placeholder="Search.."
-                  name="search"
-                  onChange={filterProductsHandler}
-                />
-                <button onClick={filterTopRatedProductsHandler}>
-                  Top Rated
-                </button>
-              </form>
+            <div class="about-section">
+              <input
+                className="search-input"
+                type="text"
+                placeholder="Search.."
+                name="search"
+                onChange={filterProductsHandler}
+              />
+              <button
+                className="top-rated-button"
+                onClick={filterTopRatedProductsHandler}
+              >
+                Top Rated
+              </button>
             </div>
             <div className="card-render-container">
               {filteredProducts?.map((productCardData) => (
                 <ProductCard
-                  key={productCardData?.id}
+                  key={productCardData?.info?.id}
                   productCardData={productCardData}
                 />
               ))}

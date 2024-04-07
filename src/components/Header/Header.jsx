@@ -27,7 +27,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto gap-4">
               <Link to="/">Home</Link>
-              <Link to="/about">About us</Link>
+              <Link to="/about">About</Link>
               <Link to="/contact">Contact us</Link>
               <Link to="" onClick={onNamechangeHanlder}>
                 {loginBtnName}
