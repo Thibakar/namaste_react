@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./components/ProductCard/ProductCard";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Footer from "./components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const MainContainer = () => {
   const [products, setProducts] = useState([]);
@@ -34,7 +35,7 @@ const MainContainer = () => {
     const data = await fetch(
       `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`,
       {
-        mode: "cors"
+        mode: "cors",
       }
     );
     const jsonData = await data.json();
@@ -77,10 +78,12 @@ const MainContainer = () => {
             </div>
             <div className="card-render-container">
               {filteredProducts?.map((productCardData) => (
-                <ProductCard
+                <Link
                   key={productCardData?.info?.id}
-                  productCardData={productCardData}
-                />
+                  to={"/ProductCardDetails/"+productCardData?.info?.id}
+                >
+                  <ProductCard productCardData={productCardData} />
+                </Link>
               ))}
             </div>
           </>
