@@ -10,6 +10,7 @@ import MainContainer from "./src/MainContainer";
 import About from "./src/components/About/About";
 import Contact from "./src/components/Contact";
 import Error from "./src/components/Error/Error"
+import ProductCardDetails from "./src/components/ProductCardDetails/ProductCardDetails";
 
 const AppLayout = () => {
   return (
@@ -37,6 +38,10 @@ const Router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/ProductCardDetails/:id",
+        element: <ProductCardDetails />,
       },
     ],
   },
