@@ -19,7 +19,7 @@ const ProductCard = ({ productCardData }) => {
           />
         </div>
         <div className="product-description p-10">
-          <h4>{name.substring(0, 19)} </h4>
+          <h4>{name.substring(0, 15)} </h4>
           <h4 className="badge">{avgRating} </h4>
         </div>
         <div className="p-10">
