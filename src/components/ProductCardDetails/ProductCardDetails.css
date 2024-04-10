@@ -28,7 +28,7 @@
 }
 
 .simmilar-products{
-    background-color: #ffff;
+    /* background-color: #ffff; */
     display: flex;
     flex-wrap: wrap;
 

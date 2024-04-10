@@ -61,7 +61,7 @@ const MainContainer = () => {
           <LoadingSpinner />
         ) : (
           <>
-            <div class="about-section">
+            <div className="about-section">
               <input
                 className="search-input"
                 type="text"
