@@ -17,7 +17,7 @@ const About = (props) => {
 
   return (
     <div>
-      <div class="about-section">
+      <div className="about-section">
         <h1>About Us Page</h1>
         <p>Some text about who we are and what we do.</p>
         <p>
@@ -27,18 +27,18 @@ const About = (props) => {
       </div>
 
       <h2 style={{ textAlign: "center" }}>Our Team</h2>
-      <div class="about-container row">
+      <div className="about-container row">
         {profiles.map((user) => (
-          <div class="column">
-            <div class="card">
+          <div className="column">
+            <div className="card">
               <img src={user.image} />
-              <div class="container">
+              <div className="container">
                 <h2>Jane Doe</h2>
-                <p class="title">CEO & Founder</p>
+                <p className="title">CEO & Founder</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>jane@example.com</p>
                 <p>
-                  <button class="button">Contact</button>
+                  <button className="button">Contact</button>
                 </p>
               </div>
             </div>

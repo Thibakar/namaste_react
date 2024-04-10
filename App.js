@@ -8,7 +8,7 @@ import "./App.css";
 import Header from "./src/components/Header/Header";
 import MainContainer from "./src/MainContainer";
 import About from "./src/components/About/About";
-import Contact from "./src/components/Contact";
+import Contact from "./src/components/contact/Contact";
 import Error from "./src/components/Error/Error"
 import ProductCardDetails from "./src/components/ProductCardDetails/ProductCardDetails";
 

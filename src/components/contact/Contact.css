@@ -9,3 +9,11 @@
   
   /* Page Content */
   .content {padding:20px;}
+
+
+  .child-component{
+    padding: 1%;
+    border: 1px solid;
+    margin: 1rem;
+    border-radius: 5px;
+  }
