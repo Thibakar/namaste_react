@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { clouImgAPI, instaMartAPI } from "./Utils/constants";
 
-const GroceryContainer = (props) => {
+const GroceryContainer = () => {
   const [groceryData, setGroceryData] = useState([]);
   const getResponse = async () => {
     const data = await fetch(instaMartAPI);

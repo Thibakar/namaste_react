@@ -3,7 +3,6 @@ import { useRouteError } from "react-router-dom";
 
 const NoDataFound = ({}) => {
   const error = useRouteError();
-  console.log('error',error);
 
   return (
     <div className="">

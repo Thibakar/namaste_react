@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./About.css";
-import { usersData, usersDataAPI } from "../../Utils/constants";
+import { usersDataAPI } from "../../Utils/constants";
 
-const About = (props) => {
+const About = () => {
   const [profiles, setProfiles] = useState([]);
-  console.log("profiles", profiles);
 
   const getProfileData = async () => {
     const data = await fetch(usersDataAPI);

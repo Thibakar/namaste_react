@@ -4,14 +4,12 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Footer from "./components/Footer/Footer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./Utils/onlineStatusHook";
-import { restaurantsName, restaurantsNameAPI } from "./Utils/constants";
+import { restaurantsNameAPI } from "./Utils/constants";
 
 const MainContainer = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchText, setSearchText] = useState("");
-  console.log("products", products);
-  console.log("filteredProducts", filteredProducts);
 
   /// search functionality using filter
   const filterProductsHandler = (e) => {
@@ -35,7 +33,6 @@ const MainContainer = () => {
   const getFetchData = async () => {
     const data = await fetch(restaurantsNameAPI);
     const jsonData = await data.json();
-    console.log("jsonData", jsonData.data);
     setProducts(
       jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -51,7 +48,6 @@ const MainContainer = () => {
   }, []);
 
   const onlineStatus = useOnlineStatus();
-  console.log("onlineStatus", onlineStatus);
   if (onlineStatus === false) {
     return (
       <>

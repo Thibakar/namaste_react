@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  } from "react";
 import "./ProductCardDetails.css";
 import "../ProductCard/ProductCard.css";
 import { useParams } from "react-router-dom";
@@ -6,9 +6,8 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import MenuCard from "../MenuCard/MenuCard";
 import UseProductDetails from "../../Utils/productDetailsHook";
 
-const ProductCardDetails = (props) => {
+const ProductCardDetails = () => {
   const { id } = useParams();
-  console.log("params", id);
 
   const productDetails = UseProductDetails(id);
   const productsMenu =

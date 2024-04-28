@@ -2,7 +2,6 @@ import React from "react";
 
 const MenuCard = ({ menuCard }) => {
     const{imageId=''}=menuCard?.card?.info
-  console.log("menuCard", menuCard.card.info.imageId);
   return (
     <div className="product-card">
       <div className="image-container">

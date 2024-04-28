@@ -2,7 +2,6 @@ import * as React from "react";
 import "./ProductCard.css";
 
 const ProductCard = ({ productCardData }) => {
-  console.log("productCardData", productCardData.info);
   const { cloudinaryImageId, avgRating, name, cuisines, costForTwo } =
     productCardData?.info;
 
