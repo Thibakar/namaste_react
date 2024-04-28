@@ -10,9 +10,11 @@ import MainContainer from "./src/MainContainer";
 import About from "./src/components/About/About";
 import Contact from "./src/components/contact/Contact";
 import Error from "./src/components/Error/Error";
-import ProductCardDetails from "./src/components/ProductCardDetails/ProductCardDetails";
 
 const Grocery = lazy(() => import("./src/GroceryContainer"));
+const ProductCardDetails = lazy(() =>
+  import("./src/components/ProductCardDetails/ProductCardDetails")
+);
 
 const AppLayout = () => {
   return (
@@ -52,7 +54,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/ProductCardDetails/:id",
-        element: <ProductCardDetails />,
+        element: (
+          <Suspense fallback={<>loading......!!!!</>}>
+            <ProductCardDetails />{" "}
+          </Suspense>
+        ),
       },
     ],
   },

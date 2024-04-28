@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { clouImgAPI, instaMartAPI } from "./Utils/constants";
 
 const GroceryContainer = (props) => {
   const [groceryData, setGroceryData] = useState([]);
   const getResponse = async () => {
-    const data = await fetch(
-      `https://www.swiggy.com/api/instamart/home?clientId=INSTAMART-APP`
-    );
+    const data = await fetch(instaMartAPI);
     const jsonData = await data.json();
-    console.log("jsonDataaaaaaaaa", jsonData?.data?.widgets[1].data);
     setGroceryData(jsonData?.data?.widgets[1]?.data);
   };
 
@@ -21,7 +19,7 @@ const GroceryContainer = (props) => {
           <img
             style={{ width: "12rem" }}
             src={
-              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+              clouImgAPI +
               item.imageId
             }
           />
