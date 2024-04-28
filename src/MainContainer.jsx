@@ -4,7 +4,7 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Footer from "./components/Footer/Footer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./Utils/onlineStatusHook";
-import { restaurantsName } from "./Utils/constants";
+import { restaurantsName, restaurantsNameAPI } from "./Utils/constants";
 
 const MainContainer = () => {
   const [products, setProducts] = useState([]);
@@ -24,7 +24,6 @@ const MainContainer = () => {
 
   /// filter topRated card function
   const filterTopRatedProductsHandler = () => {
-    console.log("jhghjgkkjkj");
     let filterdTopRatedProducts = products?.filter(
       (item) => item?.info?.avgRating > 4.5
     );
@@ -34,9 +33,7 @@ const MainContainer = () => {
 
   //Fetch API data function using async and wait
   const getFetchData = async () => {
-    const data = await fetch(
-      restaurantsName
-    );
+    const data = await fetch(restaurantsNameAPI);
     const jsonData = await data.json();
     console.log("jsonData", jsonData.data);
     setProducts(

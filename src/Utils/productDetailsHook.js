@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { restoMenuDetails } from "./constants";
+import { restoMenuDetails, restoMenuDetailsAPI } from "./constants";
 
 const UseProductDetails = (id) => {
   const [productDetails, setProductDetails] = useState([]);
@@ -9,7 +9,7 @@ const UseProductDetails = (id) => {
   }, []);
 
   const getProductDetails = async () => {
-    const data = await fetch(restoMenuDetails + id);
+    const data = await fetch(restoMenuDetailsAPI + id);
     const resData = await data.json();
     setProductDetails(resData);
   };
