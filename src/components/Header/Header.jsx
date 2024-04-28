@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Navbar, Button, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../Utils/onlineStatusHook";
 
 const Header = () => {
   const [loginBtnName, setLoginBtnName] = useState("LOG IN");
@@ -13,6 +13,7 @@ const Header = () => {
       ? setLoginBtnName("LOG OUT")
       : setLoginBtnName("LOG IN");
   };
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="nav-container">
       <Navbar
@@ -22,7 +23,7 @@ const Header = () => {
         data-bs-theme="dark"
       >
         <Container>
-          <Navbar.Brand href="#home">New Collections</Navbar.Brand>
+          <Navbar.Brand href="/">New Collections</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto gap-4">
@@ -32,6 +33,7 @@ const Header = () => {
               <Link to="" onClick={onNamechangeHanlder}>
                 {loginBtnName}
               </Link>
+              <Link> OnlineStatus: {onlineStatus ? "✅" : "⛔"} </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
