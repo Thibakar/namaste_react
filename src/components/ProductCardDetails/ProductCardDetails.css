@@ -19,12 +19,12 @@
     object-fit: cover;
     opacity: 1;
     will-change: transform, opacity;
-    border-radius: inherit;
+    border-radius: 12px;
     filter: unset;
-    width: 100%;
+    width: 50%;
     height: 25rem;
+    transition: opacity .25s, transform .25s;
     transform: none;
-    transition: opacity 0.25s ease 0s, transform 0.25s ease 0s;
 }
 
 .simmilar-products{

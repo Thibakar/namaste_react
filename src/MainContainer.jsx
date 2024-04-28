@@ -3,6 +3,7 @@ import ProductCard from "./components/ProductCard/ProductCard";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Footer from "./components/Footer/Footer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "./Utils/onlineStatusHook";
 
 const MainContainer = () => {
   const [products, setProducts] = useState([]);
@@ -33,10 +34,7 @@ const MainContainer = () => {
   //Fetch API data function using async and wait
   const getFetchData = async () => {
     const data = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`,
-      {
-        mode: "cors",
-      }
+      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
     );
     const jsonData = await data.json();
     console.log("jsonData", jsonData.data);
@@ -53,6 +51,17 @@ const MainContainer = () => {
   useEffect(() => {
     getFetchData();
   }, []);
+
+  const onlineStatus = useOnlineStatus();
+  console.log("onlineStatus", onlineStatus);
+  if (onlineStatus === false) {
+    return (
+      <>
+        <h4>You Are Offline.....!!!</h4>
+        <p>please check your internet connection .....!!!</p>
+      </>
+    );
+  }
 
   return (
     <>
@@ -80,7 +89,7 @@ const MainContainer = () => {
               {filteredProducts?.map((productCardData) => (
                 <Link
                   key={productCardData?.info?.id}
-                  to={"/ProductCardDetails/"+productCardData?.info?.id}
+                  to={"/ProductCardDetails/" + productCardData?.info?.id}
                 >
                   <ProductCard productCardData={productCardData} />
                 </Link>

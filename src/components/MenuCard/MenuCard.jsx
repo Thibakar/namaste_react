@@ -16,9 +16,9 @@ const MenuCard = ({ menuCard }) => {
       </div>
       <div className="product-description p-10">
         <h4>{menuCard?.card?.info?.name.substring(0, 15)} </h4>
-        <h4 className="badge">
+        {/* <h4 className="badge">
           {menuCard?.card?.info?.ratings.aggregatedRating?.rating}{" "}
-        </h4>
+        </h4> */}
       </div>
       <div className="p-10">
         <p>{menuCard?.card?.info?.description.substring(0, 15)}</p>
