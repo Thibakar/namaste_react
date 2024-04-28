@@ -4,6 +4,7 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Footer from "./components/Footer/Footer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./Utils/onlineStatusHook";
+import { restaurantsName } from "./Utils/constants";
 
 const MainContainer = () => {
   const [products, setProducts] = useState([]);
@@ -34,7 +35,7 @@ const MainContainer = () => {
   //Fetch API data function using async and wait
   const getFetchData = async () => {
     const data = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+      restaurantsName
     );
     const jsonData = await data.json();
     console.log("jsonData", jsonData.data);
