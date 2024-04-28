@@ -23,7 +23,7 @@ const Header = () => {
         data-bs-theme="dark"
       >
         <Container>
-          <Navbar.Brand href="/">New Collections</Navbar.Brand>
+          {/* <Navbar.Brand href="/">New Collections</Navbar.Brand> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto gap-4">
@@ -34,6 +34,11 @@ const Header = () => {
                 {loginBtnName}
               </Link>
               <Link> OnlineStatus: {onlineStatus ? "✅" : "⛔"} </Link>
+            </Nav>
+          </Navbar.Collapse>
+          <Navbar.Collapse className="justify-content-end">
+            <Nav>
+              <Link to="/grocery">Grocery</Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
