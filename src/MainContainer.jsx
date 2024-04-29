@@ -10,6 +10,7 @@ const MainContainer = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchText, setSearchText] = useState("");
+  console.log('filteredProducts', filteredProducts)
 
   /// search functionality using filter
   const filterProductsHandler = (e) => {
@@ -59,27 +60,29 @@ const MainContainer = () => {
 
   return (
     <>
-      <div className="main">
+      <div className="">
         {products.length === 0 ? (
           <LoadingSpinner />
         ) : (
           <>
-            <div className="about-section">
-              <input
-                className="search-input"
-                type="text"
-                placeholder="Search.."
-                name="search"
-                onChange={filterProductsHandler}
-              />
-              <button
-                className="top-rated-button"
-                onClick={filterTopRatedProductsHandler}
-              >
-                Top Rated
-              </button>
+            <div className="bg-slate-100 sticky top-12">
+              <div className="p-4 mx-10  ">
+                <input
+                  className=" w-50 p-3 border-black rounded-md"
+                  type="text"
+                  placeholder="Search.."
+                  name="search"
+                  onChange={filterProductsHandler}
+                />
+                <button
+                  className="w-50 p-3  rounded-md text-cyan-50 bg-slate-500"
+                  onClick={filterTopRatedProductsHandler}
+                >
+                  Top Rated
+                </button>
+              </div>
             </div>
-            <div className="card-render-container">
+            <div className="mx-10  flex flex-wrap justify-evenly">
               {filteredProducts?.map((productCardData) => (
                 <Link
                   key={productCardData?.info?.id}
@@ -92,7 +95,7 @@ const MainContainer = () => {
           </>
         )}
       </div>
-      <div className="footer">
+      <div className="flex">
         <Footer />
       </div>
     </>

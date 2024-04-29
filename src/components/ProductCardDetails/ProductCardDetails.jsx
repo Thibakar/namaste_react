@@ -1,10 +1,9 @@
-import React, {  } from "react";
-import "./ProductCardDetails.css";
-import "../ProductCard/ProductCard.css";
+import React from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import MenuCard from "../MenuCard/MenuCard";
 import UseProductDetails from "../../Utils/productDetailsHook";
+import { clouImgAPI } from "../../Utils/constants";
 
 const ProductCardDetails = () => {
   const { id } = useParams();
@@ -24,36 +23,36 @@ const ProductCardDetails = () => {
   } = productDetails?.data?.cards[2]?.card?.card?.info || {};
 
   return (
-    <div className="product-details-container">
+    <div className="mx-10 my-1">
       {productDetails.length === 0 ? (
         <LoadingSpinner />
       ) : (
         <>
-          <div className="product-details-card">
-            <h2>{name}</h2>
-            <div className="product-details-image-container">
+          <div className="p-2 bg-slate-100 rounded-md">
+            <h6 className="text-xl font-bold dark:text-white">{name}</h6>
+            <div className="w-[100%]">
               <img
-                className="product-details-image"
-                src={
-                  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-                  cloudinaryImageId
-                }
+                className=" object-center rounded-md"
+                src={clouImgAPI + cloudinaryImageId}
               />
             </div>
 
-            <div className="p-10">
-              <h4>{cuisines} </h4>
-              <h4 className="badge">{avgRating} </h4>
+            <div className="py-3">
+              <h4 className="text-xl font-bold dark:text-white">{cuisines} </h4>
+              <span className="bg-primary  inline-block rounded border border-transparent py-1 px-2.5 text-xs font-medium text-white">
+                {avgRating}
+              </span>
+
               <p>{locality}</p>
               <p> {city} </p>
               <p>{costForTwo / 200}</p>
             </div>
           </div>
           <div>
-            <h2>Menu</h2>
-            <div className="simmilar-products">
+            <h2 className="text-xl font-bold dark:text-white">Menu</h2>
+            <div className="flex flex-wrap justify-evenly">
               {productsMenu.map((menuCard, i) => {
-                return <MenuCard key={i+1} menuCard={menuCard} />;
+                return <MenuCard key={i + 1} menuCard={menuCard} />;
               })}
             </div>
           </div>

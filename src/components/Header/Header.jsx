@@ -1,48 +1,47 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/Container";
-import { Navbar, Button, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../Utils/onlineStatusHook";
 
 const Header = () => {
-  const [loginBtnName, setLoginBtnName] = useState("LOG IN");
+  const [loginBtnName, setLoginBtnName] = useState("Login");
 
   ///Login button name change function
   const onNamechangeHanlder = () => {
-    loginBtnName === "LOG IN"
-      ? setLoginBtnName("LOG OUT")
-      : setLoginBtnName("LOG IN");
+    loginBtnName === "Login"
+      ? setLoginBtnName("Logout")
+      : setLoginBtnName("Login");
   };
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="nav-container">
-      <Navbar
-        expand="lg"
-        className="bg-body-tertiary"
-        bg="dark"
-        data-bs-theme="dark"
-      >
-        <Container>
-          {/* <Navbar.Brand href="/">New Collections</Navbar.Brand> */}
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto gap-4">
-              <Link to="/">Home</Link>
-              <Link to="/about">About</Link>
-              <Link to="/contact">Contact us</Link>
-              <Link to="" onClick={onNamechangeHanlder}>
-                {loginBtnName}
-              </Link>
-              <Link> OnlineStatus: {onlineStatus ? "✅" : "⛔"} </Link>
-            </Nav>
-          </Navbar.Collapse>
-          <Navbar.Collapse className="justify-content-end">
-            <Nav>
-              <Link to="/grocery">Grocery</Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    <div className="flex justify-between sticky top-0 bg-slate-500 text-cyan-50  px-10">
+      <div className=""></div>
+      <ul className="flex py-5">
+        <li className="px-5">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="px-5">
+          <Link to="/about">About</Link>
+        </li>
+        <li className="px-5">
+          <Link to="/contact">
+            Contact us</Link>
+        </li>
+
+        <li className="px-5">
+          <Link> OnlineStatus: {onlineStatus ? "✅" : "⛔"} </Link>
+        </li>
+        <li className="px-5">
+          <Link to="/grocery">Grocery</Link>
+        </li>
+        <li className="px-5">
+          <Link to="">Cart </Link>
+        </li>
+        <li className="px-5">
+          <Link to="" onClick={onNamechangeHanlder}>
+            Login
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };
