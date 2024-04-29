@@ -14,15 +14,9 @@ const GroceryContainer = () => {
   }, []);
   return (
     <div style={{ margin: "0 8rem", display: "flex", flexWrap: "wrap" }}>
-      {groceryData.map((item) => (
-        <div style={{ padding: "8px" }}>
-          <img
-            style={{ width: "12rem" }}
-            src={
-              clouImgAPI +
-              item.imageId
-            }
-          />
+      {groceryData.map((item, i) => (
+        <div key={i + 1} style={{ padding: "8px" }}>
+          <img style={{ width: "12rem" }} src={clouImgAPI + item.imageId} />
           <div>{item.displayName}</div>
         </div>
       ))}

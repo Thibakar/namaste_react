@@ -7,7 +7,7 @@ class Contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content1: " how class based components will render and update",
+      content1: " how class-based components will render and update",
       count: 0,
     };
   }
@@ -29,7 +29,7 @@ class Contact extends React.Component {
       <>
         <div>
           <div className="header">
-            <h1>class components </h1>
+            <h1>classcomponents </h1>
             <p>component life cycle methods</p>
           </div>
           <div className="content">

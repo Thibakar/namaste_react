@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./About.css";
 import { usersDataAPI } from "../../Utils/constants";
 
 const About = () => {
@@ -28,8 +27,8 @@ const About = () => {
 
       <h2 style={{ textAlign: "center" }}>Our Team</h2>
       <div className="about-container row">
-        {profiles.map((user) => (
-          <div className="column">
+        {profiles.map((user, i) => (
+          <div key={i + 1} className="column">
             <div className="card">
               <img src={user.image} />
               <div className="container">
