@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./components/ProductCard/ProductCard";
+import ProductCard, {
+  ProductCardHOC,
+} from "./components/ProductCard/ProductCard";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import Footer from "./components/Footer/Footer";
 import { Link } from "react-router-dom";
@@ -10,7 +12,7 @@ const MainContainer = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchText, setSearchText] = useState("");
-  console.log('filteredProducts', filteredProducts)
+  const ProductCardHOCcomp = ProductCardHOC(ProductCard);
 
   /// search functionality using filter
   const filterProductsHandler = (e) => {
@@ -88,7 +90,12 @@ const MainContainer = () => {
                   key={productCardData?.info?.id}
                   to={"/ProductCardDetails/" + productCardData?.info?.id}
                 >
-                  <ProductCard productCardData={productCardData} />
+                  {productCardData?.info?.aggregatedDiscountInfoV3
+                    ?.header ? (
+                    <ProductCardHOCcomp productCardData={productCardData} />
+                  ) : (
+                    <ProductCard productCardData={productCardData} />
+                  )}
                 </Link>
               ))}
             </div>
