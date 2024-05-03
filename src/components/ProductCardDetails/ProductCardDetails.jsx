@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import MenuCard from "../MenuCard/MenuCard";
@@ -7,11 +7,16 @@ import { clouImgAPI } from "../../Utils/constants";
 
 const ProductCardDetails = () => {
   const { id } = useParams();
+  const[showIndex, setShowIndex]=useState(0)
 
   const productDetails = UseProductDetails(id);
-  const productsMenu =
-    productDetails?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
-      ?.card?.card?.itemCards;
+
+  const categrotyDetails =
+    productDetails?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (C) =>
+        C.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
   const {
     name,
     cloudinaryImageId,
@@ -23,16 +28,16 @@ const ProductCardDetails = () => {
   } = productDetails?.data?.cards[2]?.card?.card?.info || {};
 
   return (
-    <div className="mx-10 my-1">
-      {productDetails.length === 0 ? (
+    <div className=" mx-48">
+      {productDetails?.length === 0 ? (
         <LoadingSpinner />
       ) : (
         <>
-          <div className="p-2 bg-slate-100 rounded-md">
+          <div className="p-2 bg-slate-100 rounded-md align-center items-center">
             <h6 className="text-xl font-bold dark:text-white">{name}</h6>
-            <div className="w-[100%]">
+            <div className="w-98">
               <img
-                className=" object-center rounded-md"
+                className=" object-center rounded-md items-center w-2/6"
                 src={clouImgAPI + cloudinaryImageId}
               />
             </div>
@@ -50,9 +55,16 @@ const ProductCardDetails = () => {
           </div>
           <div>
             <h2 className="text-xl font-bold dark:text-white">Menu</h2>
-            <div className="flex flex-wrap justify-evenly">
-              {productsMenu.map((menuCard, i) => {
-                return <MenuCard key={i + 1} menuCard={menuCard} />;
+            <div className="">
+              {categrotyDetails.map((categrotyDetails, index) => {
+                return (
+                  <MenuCard
+                    key={index + 1}
+                    categrotyDetails={categrotyDetails?.card?.card}
+                    openMenu={index === showIndex ? true : false}
+                    setShowIndex={()=>setShowIndex(index)}
+                  />
+                );
               })}
             </div>
           </div>

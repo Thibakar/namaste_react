@@ -1,30 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import CategoriesCard from "./CategoriesCard";
 
-const MenuCard = ({ menuCard }) => {
-  const { imageId = "" } = menuCard?.card?.info;
+const MenuCard = ({ categrotyDetails, openMenu, setShowIndex }) => {
+  console.log("openMenu", openMenu);
+  const OpenMenuHandler = () => {
+    setShowIndex();
+  };
   return (
-    <div className=" w-56 bg-gray-200 p-2 m-1 rounded-md">
-      <div className="">
-        <img
-          className="h-48 w-96 object-center rounded-md"
-          src={
-            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/" +
-            imageId
-          }
-        />
+    <div className="bg-gray-200  my-2  rounded-md " onClick={OpenMenuHandler}>
+      <div className="flex justify-between px-5 py-3 font-bold">
+        <span>
+          {categrotyDetails?.title}({categrotyDetails?.itemCards?.length}){" "}
+        </span>
+        <span>➕ </span>
       </div>
-      <div className=" flex justify-between">
-        <h4>{menuCard?.card?.info?.name.substring(0, 15)} </h4>
-        {menuCard?.card?.info?.ratings.aggregatedRating?.rating && (
-          <span className="bg-primary  inline-block rounded border border-transparent py-1 px-2.5 text-xs font-medium text-white">
-            {menuCard?.card?.info?.ratings.aggregatedRating?.rating}
-          </span>
-        )}
-      </div>
-      <div className="">
-        <p>{menuCard?.card?.info?.description.substring(0, 15)}</p>
-        <p>{menuCard?.card?.info?.price / 100 } </p>
-      </div>
+      {openMenu && (
+        <div className="bg-white my-1 py-2  rounded-sm ">
+          <CategoriesCard itemCards={categrotyDetails?.itemCards} />
+        </div>
+      )}
     </div>
   );
 };
