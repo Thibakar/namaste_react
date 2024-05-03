@@ -36,4 +36,18 @@ const ProductCard = ({ productCardData }) => {
     </div>
   );
 };
+export const ProductCardHOC = (ProductCard) => {
+  return (props) => {
+    const { aggregatedDiscountInfoV3 } = props?.productCardData?.info;
+    return (
+      <>
+        <div className="flex absolute font-extrabold py-44 px-5 text-white">
+          <h1>{aggregatedDiscountInfoV3?.header}</h1>
+          <label>{aggregatedDiscountInfoV3?.subHeader} </label>
+        </div>
+        <ProductCard {...props} />
+      </>
+    );
+  };
+};
 export default ProductCard;
