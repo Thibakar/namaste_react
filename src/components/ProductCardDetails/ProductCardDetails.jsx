@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import MenuCard from "../MenuCard/MenuCard";
 import UseProductDetails from "../../Utils/productDetailsHook";
 import { clouImgAPI } from "../../Utils/constants";
+import Context from "../../Utils/Context";
 
 const ProductCardDetails = () => {
+  const {loggedInUser}= useContext(Context)
   const { id } = useParams();
   const[showIndex, setShowIndex]=useState(0)
 
@@ -28,7 +30,7 @@ const ProductCardDetails = () => {
   } = productDetails?.data?.cards[2]?.card?.card?.info || {};
 
   return (
-    <div className=" mx-48">
+    <div className=" py-3 mx-48">
       {productDetails?.length === 0 ? (
         <LoadingSpinner />
       ) : (
@@ -37,7 +39,7 @@ const ProductCardDetails = () => {
             <h6 className="text-xl font-bold dark:text-white">{name}</h6>
             <div className="w-98">
               <img
-                className=" object-center rounded-md items-center w-2/6"
+                className=" bg-cover obg-center rounded-md items-center w-1/3 h-96"
                 src={clouImgAPI + cloudinaryImageId}
               />
             </div>
@@ -51,6 +53,7 @@ const ProductCardDetails = () => {
               <p>{locality}</p>
               <p> {city} </p>
               <p>{costForTwo / 200}</p>
+              <p>user:{loggedInUser} </p>
             </div>
           </div>
           <div>

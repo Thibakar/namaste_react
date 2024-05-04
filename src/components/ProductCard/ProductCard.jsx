@@ -1,7 +1,9 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { clouImgAPI } from "../../Utils/constants";
+import Context from "../../Utils/Context";
 
 const ProductCard = ({ productCardData }) => {
+  const { loggedInUser } = useContext(Context);
   const {
     cloudinaryImageId,
     avgRating,
@@ -31,6 +33,7 @@ const ProductCard = ({ productCardData }) => {
         <div className="">
           <div className="">{cuisines.join(",").substring(0, 25)}</div>
           <p>{costForTwo} </p>
+          <p>{loggedInUser}</p>
         </div>
       </div>
     </div>

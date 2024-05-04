@@ -2,11 +2,9 @@ import React from "react";
 import { clouImgAPI } from "../../Utils/constants";
 
 const CategoriesCard = ({ itemCards }) => {
-  console.log("itemCards", itemCards);
   return (
     <>
       {itemCards.map((item) => {
-        console.log("item", item?.card);
         const { info } = item?.card;
         return (
           <>
