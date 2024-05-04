@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CategoriesCard from "./CategoriesCard";
 
 const MenuCard = ({ categrotyDetails, openMenu, setShowIndex }) => {
-  console.log("openMenu", openMenu);
   const OpenMenuHandler = () => {
     setShowIndex();
   };

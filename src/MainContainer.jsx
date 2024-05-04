@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard, {
   ProductCardHOC,
 } from "./components/ProductCard/ProductCard";
@@ -7,8 +7,10 @@ import Footer from "./components/Footer/Footer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./Utils/onlineStatusHook";
 import { restaurantsNameAPI } from "./Utils/constants";
+import Context from "./Utils/Context";
 
 const MainContainer = () => {
+  const { loggedInUser, setUserName } = useContext(Context);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -25,10 +27,14 @@ const MainContainer = () => {
 
   /// filter topRated card function
   const filterTopRatedProductsHandler = () => {
-    let filterdTopRatedProducts = products?.filter(
-      (item) => item?.info?.avgRating > 4.5
-    );
-    setFilteredProducts(filterdTopRatedProducts);
+    if (products?.length === filteredProducts.length) {
+      let filterdTopRatedProducts = products?.filter(
+        (item) => item?.info?.avgRating > 4.5
+      );
+      setFilteredProducts(filterdTopRatedProducts);
+    } else {
+      setFilteredProducts(products);
+    }
     setSearchText("");
   };
 
@@ -68,20 +74,30 @@ const MainContainer = () => {
         ) : (
           <>
             <div className="bg-slate-100 sticky top-12">
-              <div className="p-4 mx-10  ">
+              <div className="p-4 mx-10 flex justify-between">
                 <input
-                  className=" w-50 p-3 border-black rounded-md"
+                  className="w-96 p-3 border-black rounded-md"
                   type="text"
                   placeholder="Search.."
                   name="search"
                   onChange={filterProductsHandler}
                 />
                 <button
-                  className="w-50 p-3  rounded-md text-cyan-50 bg-slate-500"
+                  className="w-96 p-3  rounded-md text-cyan-50 bg-slate-500"
                   onClick={filterTopRatedProductsHandler}
                 >
                   Top Rated
                 </button>
+                <input
+                  className="w-96 p-3 border-black rounded-md"
+                  type="text"
+                  placeholder="Search.."
+                  name="search"
+                  value={loggedInUser}
+                  onChange={(e) => {
+                    setUserName(e.target.value);
+                  }}
+                />
               </div>
             </div>
             <div className="mx-10  flex flex-wrap justify-evenly">
@@ -90,8 +106,7 @@ const MainContainer = () => {
                   key={productCardData?.info?.id}
                   to={"/ProductCardDetails/" + productCardData?.info?.id}
                 >
-                  {productCardData?.info?.aggregatedDiscountInfoV3
-                    ?.header ? (
+                  {productCardData?.info?.aggregatedDiscountInfoV3?.header ? (
                     <ProductCardHOCcomp productCardData={productCardData} />
                   ) : (
                     <ProductCard productCardData={productCardData} />

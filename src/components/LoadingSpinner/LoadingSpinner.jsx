@@ -13,15 +13,13 @@ const data = [
   { name: "" },
   { name: "" },
   { name: "" },
- 
- 
 ];
 
 const LoadingSpinner = ({}) => {
   return (
-      <div className="m-10 flex flex-wrap">
-      {data.map((item) => (
-        <div className="m-2">
+    <div className="m-10 flex flex-wrap">
+      {data.map((item, i) => (
+        <div className="m-2" key={i + 1}>
           <div className="w-52  h-100 p-2 bg-slate-100 rounded-md">
             <div className="">
               {item.name}
@@ -30,7 +28,7 @@ const LoadingSpinner = ({}) => {
           </div>
         </div>
       ))}
-      </div>
+    </div>
   );
 };
 export default LoadingSpinner;

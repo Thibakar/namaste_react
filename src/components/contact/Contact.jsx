@@ -2,6 +2,7 @@ import React from "react";
 import "./Contact.css";
 import Footer from "../Footer/Footer";
 import ChildComponent from "./ChildComponent";
+import Context from "../../Utils/Context";
 
 class Contact extends React.Component {
   constructor(props) {
@@ -29,6 +30,9 @@ class Contact extends React.Component {
       <>
         <div>
           <div className="header">
+            <Context.Consumer>
+              {({ loggedInUser }) => <>UserName:{loggedInUser}</>}
+            </Context.Consumer>
             <h1>classcomponents </h1>
             <p>component life cycle methods</p>
           </div>

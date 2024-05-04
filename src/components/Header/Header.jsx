@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../Utils/onlineStatusHook";
+import Context from "../../Utils/Context";
 
 const Header = () => {
   const [loginBtnName, setLoginBtnName] = useState("Login");
+
+  ///UseContext -- taking value from context 
+  const { loggedInUser } = useContext(Context);
 
   ///Login button name change function
   const onNamechangeHanlder = () => {
@@ -23,8 +27,7 @@ const Header = () => {
           <Link to="/about">About</Link>
         </li>
         <li className="px-5">
-          <Link to="/contact">
-            Contact us</Link>
+          <Link to="/contact">Contact us</Link>
         </li>
 
         <li className="px-5">
@@ -37,10 +40,11 @@ const Header = () => {
           <Link to="">Cart </Link>
         </li>
         <li className="px-5">
-          <Link to="" onClick={onNamechangeHanlder}>
-            Login
-          </Link>
+          <div to="" onClick={onNamechangeHanlder}>
+            {loginBtnName}
+          </div>
         </li>
+        <li className="px-5">User:{loggedInUser}</li>
       </ul>
     </div>
   );
