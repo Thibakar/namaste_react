@@ -31,13 +31,13 @@ const About = () => {
           <div key={i + 1} className="">
             <div className="card w-64 my-3 relative">
               <img src={user.image} />
-              <div className="container">
-                <h2>Jane Doe</h2>
-                <p className="title">CEO & Founder</p>
+              <div className="mx-2 py-2">
+                <h2 className="font-bold">Jane Doe</h2>
+                <p className="font-semibold py-2">CEO & Founder</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>jane@example.com</p>
+                <p className="font-semibold">jane@example.com</p>
                 <p>
-                  <button className="button">Contact</button>
+                  <button className="">Contact</button>
                 </p>
               </div>
             </div>
